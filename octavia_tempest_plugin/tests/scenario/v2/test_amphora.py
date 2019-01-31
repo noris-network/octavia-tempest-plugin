@@ -112,6 +112,11 @@ class AmphoraScenarioTest(test_base.LoadBalancerBaseTest):
         # Get an actual list of the amphorae
         amphorae = self.os_admin.amphora_client.list_amphorae()
 
+        # Get an actual list of the amphoras for our own loadbalancer
+        amphorae_filtered = self.os_admin.amphora_client.list_amphorae(
+            query_params='{loadbalancer_id}={lb_id}'.format(
+                loadbalancer_id=const.LOADBALANCER_ID, lb_id=lb_id))
+
         # There should be AT LEAST 2, there may be more depending on the
         # configured topology, or if there are other LBs created besides ours
         self.assertTrue(
@@ -124,7 +129,7 @@ class AmphoraScenarioTest(test_base.LoadBalancerBaseTest):
             show_amphora_response_fields.append('updated_at')
             show_amphora_response_fields.append('image_id')
 
-        for amp in amphorae:
+        for amp in amphorae_filtered:
 
             # Make sure all of the fields exist on the amp list records
             for field in show_amphora_response_fields:
