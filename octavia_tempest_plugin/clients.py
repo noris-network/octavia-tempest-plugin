@@ -48,24 +48,24 @@ class ManagerV2(clients.Manager):
         super(ManagerV2, self).__init__(credentials)
 
         self.loadbalancer_client = loadbalancer_client.LoadbalancerClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.listener_client = listener_client.ListenerClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.pool_client = pool_client.PoolClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.member_client = member_client.MemberClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.healthmonitor_client = healthmonitor_client.HealthMonitorClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.l7policy_client = l7policy_client.L7PolicyClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.l7rule_client = l7rule_client.L7RuleClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.amphora_client = amphora_client.AmphoraClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.flavor_profile_client = flavor_profile_client.FlavorProfileClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.flavor_client = flavor_client.FlavorClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
         self.provider_client = provider_client.ProviderClient(
-            self.auth_provider, SERVICE_TYPE, CONF.identity.region)
+            self.auth_provider, SERVICE_TYPE, CONF.identity.region, ca_certs=CONF.identity.ca_certificates_file)
